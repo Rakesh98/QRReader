@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.journeyapps.barcodescanner.CompoundBarcodeView
+        android:id="@+id/zxing_qr_code_scanner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+    </com.journeyapps.barcodescanner.CompoundBarcodeView>
+    <ImageView
+        android:id="@+id/iv_light_image"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/icon_tourch"/>
+</RelativeLayout>

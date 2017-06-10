@@ -1,0 +1,4 @@
+
+squid:S1450"^Remove the "mHistoryAdapter" field and declare it as a local variable in the relevant methods.(’Øšëúÿÿÿÿ8ÿ’Ó®¾+
+Esquid:S1125")Remove the literal "false" boolean value.(•çš8¾öÓ®¾+
+squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ñİ§¡8¾öÓ®¾+
