@@ -1,0 +1,39 @@
+<resources>
+    <!--Chaines-->
+    <string name="app_name">QR和条码扫描器</string>
+    <string name="action_settings">设置</string>
+    <string name="scan">扫描</string>
+    <string name="scan_qr_code">扫描二维码</string>
+    <string name="scan_bar_code">扫描条码</string>
+    <string name="generate_qr_code">创建QR码</string>
+    <string name="generate_bar_code">创建条形码</string>
+    <string name="history">历史</string>
+    <string name="settings">设置</string>
+    <string name="results">结果</string>
+    <string name="cancel">背部</string>
+    <string name="content_type">内容类型</string>
+    <string name="create">创建</string>
+    <string name="select_content_type">选择内容类型</string>
+    <string name="copy_to_clip_board">复制到剪贴板</string>
+    <string name="free_text">文本</string>
+    <string name="free_text_hint">输入文字</string>
+    <string name="url">网址</string>
+    <string name="url_hint">输入网址</string>
+    <string name="visiting_card">访问卡</string>
+    <string name="email">电子邮件</string>
+    <string name="images">图片</string>
+    <string name="invitation">请帖</string>
+    <string-array name="content_type_array">
+        <item>@string/free_text</item>
+        <item>@string/url</item>
+        <item>@string/images</item>
+        <item>@string/visiting_card</item>
+        <item>@string/invitation</item>
+    </string-array>
+    <string name="invalid_text">文字无效</string>
+    <string name="copied_text_to_clip_board">将文本复制到剪贴板</string>
+    <string name="invalid_url">无效的网址</string>
+    <string name="failed_to_encode_text">无法对文字进行编码</string>
+    <string name="request_camera_permission">无法在无照相机的情况下扫描。请启用应用设置的权限</string>
+</resources>
+

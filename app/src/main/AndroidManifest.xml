@@ -8,14 +8,16 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon_app"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:resizeableActivity="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:configChanges="keyboard|keyboardHidden|screenSize|screenLayout|orientation"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,6 +28,7 @@
         <activity
             android:name=".CustomCaptureActivity"
             android:label="@string/app_name"
+            android:configChanges="keyboard|keyboardHidden|screenSize|screenLayout|orientation"
             android:theme="@style/AppTheme">
         </activity>
         <activity
@@ -37,8 +40,14 @@
         <activity
             android:name=".HistoryActivity"
             android:label="@string/history"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:configChanges="keyboard|keyboardHidden|screenSize|screenLayout|orientation"
+            android:screenOrientation="portrait">
         </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="6477f8e82027c4fc1913186615e2499b605f9e0d" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.URLUtil;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -38,9 +37,17 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     holder.tvResult.setText(historyList.get(position).getResult());
     holder.tvDate.setText(historyList.get(position).getDate());
     if (historyList.get(position).getType().equals(Constants.QR_CODE)) {
-      holder.ivIcon.setImageResource(R.drawable.icon_qr_code);
+      if (historyList.get(position).isScanned()) {
+        holder.ivIcon.setImageResource(R.drawable.icon_qr_code_search);
+      } else {
+        holder.ivIcon.setImageResource(R.drawable.icon_qr_code);
+      }
     } else {
-      holder.ivIcon.setImageResource(R.drawable.icon_bar_code);
+      if (historyList.get(position).isScanned()) {
+        holder.ivIcon.setImageResource(R.drawable.icon_bar_code_search);
+      } else {
+        holder.ivIcon.setImageResource(R.drawable.icon_bar_code);
+      }
     }
     holder.root.setOnClickListener(new View.OnClickListener() {
       @Override

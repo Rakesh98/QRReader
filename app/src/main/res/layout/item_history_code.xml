@@ -16,14 +16,14 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/icon_qr_code" />
+            android:src="@drawable/icon_qr_code_search" />
 
         <TextView
             android:id="@+id/tv_result"
             style="@style/TextViewMediumBold"
             android:layout_width="match_parent"
-            android:layout_marginRight="4dp"
-            android:layout_marginLeft="4dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
             android:layout_toLeftOf="@+id/iv_delete"
             android:layout_toRightOf="@+id/iv_icon" />
 

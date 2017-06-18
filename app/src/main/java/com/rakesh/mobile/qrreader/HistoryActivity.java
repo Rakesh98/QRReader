@@ -6,6 +6,9 @@ import java.util.List;
 import com.rakesh.mobile.qrreader.data_base.History;
 import com.rakesh.mobile.qrreader.data_base.ScanDataBaseHelper;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -16,8 +19,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.View;
 import android.webkit.URLUtil;
+import android.widget.Toast;
 
 /**
  * Created by rakesh.jnanagari on 05/02/17.
@@ -58,8 +64,27 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
       Intent intent = new Intent(Intent.ACTION_VIEW);
       intent.setData(Uri.parse(historyList.get(position).getResult()));
       startActivity(intent);
+    } else {
+      ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+      ClipData clip = ClipData.newPlainText(getString(R.string.app_name),
+          fromHtml(historyList.get(position).getResult()));
+      clipboard.setPrimaryClip(clip);
+      Toast.makeText(this, getString(R.string.copied_text_to_clip_board), Toast.LENGTH_SHORT)
+          .show();
     }
   }
+
+  @SuppressWarnings("deprecation")
+  public Spanned fromHtml(String html) {
+    Spanned result;
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+      result = Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY);
+    } else {
+      result = Html.fromHtml(html);
+    }
+    return result;
+  }
+
 
   private boolean isValidUrl(String url) {
     return URLUtil.isValidUrl(url);
@@ -80,6 +105,7 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
             .setDate(cursor.getString(cursor.getColumnIndex(ScanDataBaseHelper.SCAN_COLUMN_DATE)));
         history
             .setType(cursor.getString(cursor.getColumnIndex(ScanDataBaseHelper.SCAN_COLUMN_TYPE)));
+          history.setScanned(0 == cursor.getInt(cursor.getColumnIndex(ScanDataBaseHelper.SCAN_COLUMN_IS_SCANNED)));
         historyList.add(history);
         cursor.moveToNext();
       }

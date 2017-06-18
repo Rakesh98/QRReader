@@ -16,6 +16,7 @@ public class ScanDataBaseHelper extends SQLiteOpenHelper {
     public static final String SCAN_COLUMN_RESULT = "result";
     public static final String SCAN_COLUMN_DATE = "date";
     public static final String SCAN_COLUMN_TYPE = "type";
+    public static final String SCAN_COLUMN_IS_SCANNED = "is_scanned";
 
     public ScanDataBaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -27,7 +28,8 @@ public class ScanDataBaseHelper extends SQLiteOpenHelper {
                 SCAN_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 SCAN_COLUMN_RESULT + " TEXT, " +
                 SCAN_COLUMN_DATE + " TEXT, " +
-                SCAN_COLUMN_TYPE + " TEXT" + ")");
+                SCAN_COLUMN_TYPE + " TEXT, " +
+                SCAN_COLUMN_IS_SCANNED + " INTEGER" +")");
     }
 
     @Override

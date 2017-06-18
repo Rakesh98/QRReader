@@ -47,6 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_marginTop="8dp"
+        android:visibility="gone"
         android:background="@android:color/darker_gray" />
 
     <RadioButton
@@ -58,11 +59,13 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:gravity="left|center_vertical"
+        android:visibility="gone"
         android:layoutDirection="rtl"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_marginTop="8dp"
+        android:visibility="gone"
         android:background="@android:color/darker_gray" />
 
     <RadioButton
@@ -74,12 +77,14 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:gravity="left|center_vertical"
-        android:layoutDirection="rtl"/>
+        android:layoutDirection="rtl"
+        android:visibility="gone"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_marginTop="8dp"
-        android:background="@android:color/darker_gray" />
+        android:background="@android:color/darker_gray"
+        android:visibility="gone"/>
     <RadioButton
         android:id="@+id/rb_invitation"
         style="@style/TextViewMedium"
@@ -90,6 +95,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
         android:gravity="left|center_vertical"
-        android:layoutDirection="rtl"/>
+        android:layoutDirection="rtl"
+        android:visibility="gone"/>
 
 </LinearLayout>

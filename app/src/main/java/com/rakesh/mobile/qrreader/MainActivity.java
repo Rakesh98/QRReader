@@ -1,5 +1,7 @@
 package com.rakesh.mobile.qrreader;
 
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 import java.text.DateFormat;
 import java.util.Date;
 
@@ -21,8 +23,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.URLUtil;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    Fabric.with(this, new Crashlytics());
     setContentView(R.layout.activity_main);
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
@@ -46,28 +48,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     findViewById(R.id.bt_generate_bar_code).setOnClickListener(this);
     findViewById(R.id.bt_history).setOnClickListener(this);
   }
-
-  @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
-    // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.menu_main, menu);
-    return true;
-  }
-
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    // Handle action bar item clicks here. The action bar will
-    // automatically handle clicks on the Home/Up button, so long
-    // as you specify a parent activity in AndroidManifest.xml.
-    int id = item.getItemId();
-
-    // noinspection SimplifiableIfStatement
-    if (id == R.id.action_settings) {
-      return true;
-    }
-
-    return super.onOptionsItemSelected(item);
-  }
+  /*
+   * @Override public boolean onCreateOptionsMenu(Menu menu) { // Inflate the menu; this adds items
+   * to the action bar if it is present. getMenuInflater().inflate(R.menu.menu_main, menu); return
+   * true; }
+   * @Override public boolean onOptionsItemSelected(MenuItem item) { // Handle action bar item
+   * clicks here. The action bar will // automatically handle clicks on the Home/Up button, so long
+   * // as you specify a parent activity in AndroidManifest.xml. int id = item.getItemId(); //
+   * noinspection SimplifiableIfStatement if (id == R.id.action_settings) { return true; } return
+   * super.onOptionsItemSelected(item); }
+   */
 
   @Override
   public void onClick(View v) {
@@ -183,7 +173,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
       }
     });
 
-    toolbar.setTitle(getString(R.string.scan));
+    toolbar.setTitle(getString(R.string.results));
     ((TextView) dialog.findViewById(R.id.tv_results)).setText(fromHtml(content));
     ((TextView) dialog.findViewById(R.id.tv_results))
         .setMovementMethod(LinkMovementMethod.getInstance());
@@ -213,6 +203,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         DateFormat.getDateTimeInstance().format(new Date()));
     values.put(ScanDataBaseHelper.SCAN_COLUMN_TYPE,
         isScanTypeQR ? Constants.QR_CODE : Constants.BAR_CODE);
+    values.put(ScanDataBaseHelper.SCAN_COLUMN_IS_SCANNED,
+            0);
     database.insert(ScanDataBaseHelper.SCAN_TABLE_NAME, null, values);
   }
 

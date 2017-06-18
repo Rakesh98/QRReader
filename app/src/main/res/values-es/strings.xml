@@ -1,0 +1,39 @@
+<resources>
+    <!--Spanish-->
+    <string name="app_name">QR y escáner de código de barras</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="scan">Escanear</string>
+    <string name="scan_qr_code">Escanear código QR</string>
+    <string name="scan_bar_code">Escanear código de barras</string>
+    <string name="generate_qr_code">Crear código QR</string>
+    <string name="generate_bar_code">Crear código de barras</string>
+    <string name="history">Historia</string>
+    <string name="settings">Ajustes</string>
+    <string name="results">Resultados</string>
+    <string name="cancel">espalda</string>
+    <string name="content_type">Tipo de contenido</string>
+    <string name="create">Crear</string>
+    <string name="select_content_type">Seleccionar tipo de contenido</string>
+    <string name="copy_to_clip_board">copiar al portapapeles</string>
+    <string name="free_text">Texto</string>
+    <string name="free_text_hint">Ingrese texto</string>
+    <string name="url">URL</string>
+    <string name="url_hint">Introducir URL</string>
+    <string name="visiting_card">Tarjeta de visitante</string>
+    <string name="email">Email</string>
+    <string name="images">Imágenes</string>
+    <string name="invitation">Invitación</string>
+    <string-array name="content_type_array">
+        <item>@string/free_text</item>
+        <item>@string/url</item>
+        <item>@string/images</item>
+        <item>@string/visiting_card</item>
+        <item>@string/invitation</item>
+    </string-array>
+    <string name="invalid_text">Texto no válido</string>
+    <string name="copied_text_to_clip_board">Texto copiado en la libreta</string>
+    <string name="invalid_url">URL invalida</string>
+    <string name="failed_to_encode_text">Error al codificar el texto</string>
+    <string name="request_camera_permission">No se puede escanear sin permiso de la cámara. Permitir permiso de la configuración de la aplicación</string>
+</resources>
+

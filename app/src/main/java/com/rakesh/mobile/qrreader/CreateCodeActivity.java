@@ -1,23 +1,32 @@
 package com.rakesh.mobile.qrreader;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Random;
+
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
+import com.rakesh.mobile.qrreader.data_base.ScanDataBaseHelper;
 
 import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -26,13 +35,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Random;
 
 /**
  * Created by rakesh.jnanagari on 29/01/17.
@@ -52,6 +54,7 @@ public class CreateCodeActivity extends AppCompatActivity {
   private ImageView ivCode;
   private ImageView ivShare;
   private Bitmap generatedBitMap;
+  private Toolbar toolbar;
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,7 +68,26 @@ public class CreateCodeActivity extends AppCompatActivity {
     btCreate = (Button) findViewById(R.id.bt_create);
     ivCode = (ImageView) findViewById(R.id.iv_generated_code);
     ivShare = (ImageView) findViewById(R.id.iv_share);
+    toolbar = (Toolbar) findViewById(R.id.toolbar);
 
+    setSupportActionBar(toolbar);
+    if (null != getSupportActionBar()) {
+      getSupportActionBar().setDisplayShowTitleEnabled(false);
+    }
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    getSupportActionBar().setDisplayShowHomeEnabled(true);
+    toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        onBackPressed();
+      }
+    });
+    if (isQRCode) {
+      toolbar.setTitle(getString(R.string.generate_qr_code));
+    } else {
+      toolbar.setTitle(getString(R.string.generate_bar_code));
+    }
+    toolbar.setTitleTextColor(Color.WHITE);
     etContentType
         .setText(getResources().getStringArray(R.array.content_type_array)[selectedContentType]);
 
@@ -116,7 +138,10 @@ public class CreateCodeActivity extends AppCompatActivity {
     dialog.findViewById(R.id.rb_free_text).setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        selectedContentType = 0;
+        if (selectedContentType != 0) {
+          etTextContentValue.setText("");
+          selectedContentType = 0;
+        }
         ivCode.setVisibility(View.GONE);
         ivShare.setVisibility(View.GONE);
         etContentType.setText(
@@ -129,7 +154,10 @@ public class CreateCodeActivity extends AppCompatActivity {
     dialog.findViewById(R.id.rb_url).setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        selectedContentType = 1;
+        if (selectedContentType != 1) {
+          etTextContentValue.setText("");
+          selectedContentType = 1;
+        }
         ivCode.setVisibility(View.GONE);
         ivShare.setVisibility(View.GONE);
         etContentType.setText(
@@ -181,11 +209,13 @@ public class CreateCodeActivity extends AppCompatActivity {
         ivShare.setVisibility(View.VISIBLE);
         ivCode.setVisibility(View.VISIBLE);
       }
+      saveToDB(content);
       ivShare.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 
-          String root = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString();
+          String root = Environment
+              .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString();
           File myDir = new File(root + "/saved_images");
           myDir.mkdirs();
           Random generator = new Random();
@@ -200,23 +230,22 @@ public class CreateCodeActivity extends AppCompatActivity {
             generatedBitMap.compress(Bitmap.CompressFormat.JPEG, 90, out);
             out.flush();
             out.close();
-          }
-          catch (Exception e) {
+          } catch (Exception e) {
             e.printStackTrace();
           }
 
 
           // Tell the media scanner about the new file so that it is
           // immediately available to the user.
-          MediaScannerConnection.scanFile(CreateCodeActivity.this, new String[] { file.toString() }, null,
-                  new MediaScannerConnection.OnScanCompletedListener() {
-                    public void onScanCompleted(String path, Uri uri) {
-                      Log.i("ExternalStorage", "Scanned " + path + ":");
-                      Log.i("ExternalStorage", "-> uri=" + uri);
-                    }
-                  });
+          MediaScannerConnection.scanFile(CreateCodeActivity.this, new String[] {file.toString()},
+              null, new MediaScannerConnection.OnScanCompletedListener() {
+                public void onScanCompleted(String path, Uri uri) {
+                  Log.i("ExternalStorage", "Scanned " + path + ":");
+                  Log.i("ExternalStorage", "-> uri=" + uri);
+                }
+              });
 
-          Uri uri = Uri.parse("file://"+file.getAbsolutePath());
+          Uri uri = Uri.parse("file://" + file.getAbsolutePath());
           Intent share = new Intent(Intent.ACTION_SEND);
           share.putExtra(Intent.EXTRA_STREAM, uri);
           share.setType("image/*");
@@ -225,7 +254,9 @@ public class CreateCodeActivity extends AppCompatActivity {
         }
       });
     } catch (WriterException e) {
-      e.printStackTrace();
+      Toast.makeText(this, getString(R.string.failed_to_encode_text), Toast.LENGTH_LONG).show();
+    } catch (Exception e) {
+      Toast.makeText(this, getString(R.string.failed_to_encode_text), Toast.LENGTH_LONG).show();
     }
 
   }
@@ -240,6 +271,19 @@ public class CreateCodeActivity extends AppCompatActivity {
       return true;
     }
     return false;
+  }
+
+  private void saveToDB(String content) {
+    SQLiteDatabase database = new ScanDataBaseHelper(this).getWritableDatabase();
+    ContentValues values = new ContentValues();
+    values.put(ScanDataBaseHelper.SCAN_COLUMN_RESULT, content);
+    values.put(ScanDataBaseHelper.SCAN_COLUMN_DATE,
+            DateFormat.getDateTimeInstance().format(new Date()));
+    values.put(ScanDataBaseHelper.SCAN_COLUMN_TYPE,
+            isQRCode ? Constants.QR_CODE : Constants.BAR_CODE);
+    values.put(ScanDataBaseHelper.SCAN_COLUMN_IS_SCANNED,
+            1);
+    database.insert(ScanDataBaseHelper.SCAN_TABLE_NAME, null, values);
   }
 
   private boolean isValidUrl(String url) {

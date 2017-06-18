@@ -8,6 +8,7 @@ public class History {
     private String result;
     private String date;
     private String type;
+    private boolean isScanned;
 
     public History() {
     }
@@ -34,5 +35,13 @@ public class History {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public boolean isScanned() {
+        return this.isScanned;
+    }
+
+    public void setScanned(boolean scanned) {
+        this.isScanned = scanned;
     }
 }

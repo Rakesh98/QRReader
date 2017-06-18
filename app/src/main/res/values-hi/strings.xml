@@ -1,0 +1,40 @@
+<resources>
+    <!--Hindi-->
+    <string name="app_name">क्यूआर और बार कोड स्कैनर</string>
+    <string name="action_settings">सेटिंग्स</string>
+    <string name="scan">स्कैन</string>
+    <string name="scan_qr_code">क्यू आर कोड स्कैन करें</string>
+    <string name="scan_bar_code">स्कैन बार कोड</string>
+    <string name="generate_qr_code">क्यूआर कोड बनाएं</string>
+    <string name="generate_bar_code">बार कोड बनाएँ</string>
+    <string name="history">इतिहास</string>
+    <string name="settings">सेटिंग्स</string>
+    <string name="results">परिणाम</string>
+    <string name="cancel">वापस</string>
+    <string name="content_type">सामग्री प्रकार</string>
+    <string name="create">सर्जन करना</string>
+    <string name="select_content_type">सामग्री प्रकार चुनें</string>
+    <string name="copy_to_clip_board">क्लिपबोर्ड पर कॉपी करें</string>
+    <string name="free_text">टेक्स्ट</string>
+    <string name="free_text_hint">पाठ दर्ज करें</string>
+    <string name="url">ू आर एल</string>
+    <string name="url_hint">यू आर एल दर्ज करो</string>
+    <string name="visiting_card">विजिटिंग कार्ड</string>
+    <string name="email">ईमेल</string>
+    <string name="images">इमेजिस</string>
+    <string name="invitation">निमंत्रण</string>
+    <string-array name="content_type_array">
+        <item>@string/free_text</item>
+        <item>@string/url</item>
+        <item>@string/images</item>
+        <item>@string/visiting_card</item>
+        <item>@string/invitation</item>
+    </string-array>
+    <string name="invalid_text">अमान्य टेक्स्ट</string>
+    <string name="copied_text_to_clip_board">क्लिप बोर्ड को टेक्स्ट कॉपी किया गया</string>
+    <string name="invalid_url">अवैध यूआरएल</string>
+    <string name="failed_to_encode_text">
+पाठ को एन्कोड करने में विफल</string>
+    <string name="request_camera_permission">कैमरा अनुमति के बिना स्कैन नहीं कर सकता कृपया ऐप सेटिंग्स से अनुमति सक्षम करें</string>
+</resources>
+

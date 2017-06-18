@@ -1,0 +1,39 @@
+<resources>
+    <!--Bahasa-->
+    <string name="app_name">QR dan pemindai kode BAR</string>
+    <string name="action_settings">Pengaturan</string>
+    <string name="scan">Pindai</string>
+    <string name="scan_qr_code">Pindai kode QR</string>
+    <string name="scan_bar_code">Memindai kode batang</string>
+    <string name="generate_qr_code">Buat QR Code</string>
+    <string name="generate_bar_code">Buat Kode Bar</string>
+    <string name="history">Sejarah</string>
+    <string name="settings">Pengaturan</string>
+    <string name="results">Hasil</string>
+    <string name="cancel">kembali</string>
+    <string name="content_type">Jenis konten</string>
+    <string name="create">Membuat</string>
+    <string name="select_content_type">Pilih Jenis Konten</string>
+    <string name="copy_to_clip_board">menyalin ke clipboard</string>
+    <string name="free_text">Teks</string>
+    <string name="free_text_hint">Masukkan teks</string>
+    <string name="url">URL</string>
+    <string name="url_hint">Masukkan URL</string>
+    <string name="visiting_card">Kartu Kunjungan</string>
+    <string name="email">Email</string>
+    <string name="images">Gambar</string>
+    <string name="invitation">Undangan</string>
+    <string-array name="content_type_array">
+        <item>@string/free_text</item>
+        <item>@string/url</item>
+        <item>@string/images</item>
+        <item>@string/visiting_card</item>
+        <item>@string/invitation</item>
+    </string-array>
+    <string name="invalid_text">Teks tidak valid</string>
+    <string name="copied_text_to_clip_board">Salin teks ke papan klip</string>
+    <string name="invalid_url">URL tidak valid</string>
+    <string name="failed_to_encode_text">Gagal menyandikan teks</string>
+    <string name="request_camera_permission">Tidak bisa memindai tanpa izin kamera. Izinkan izin dari pengaturan App</string>
+</resources>
+

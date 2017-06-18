@@ -1,15 +1,20 @@
 
-lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(±ğğ½üÿÿÿÿ8‹Â—¾+
-gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ÓœÈî8‹Â—¾+
-lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(«‰…úÿÿÿÿ8‹Â—¾+
-Usquid:S1444"4Make this "public static scanning2DCode" field final(¯Øåßøÿÿÿÿ8êç…Â+
-lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Î­Ÿûÿÿÿÿ8‹Â—¾+
-"squid:ClassVariableVisibilityCheck"XMake isScanTypeQR a static final constant or non-public and provide accessors if needed.(Ñø¾òøÿÿÿÿ8¯ñ—¾+
-_squid:S1854">Remove this useless assignment to local variable "scanFormat".(ÅÕÊıÿÿÿÿ8‹Â—¾+
-’"squid:ClassVariableVisibilityCheck"ZMake scanning2DCode a static final constant or non-public and provide accessors if needed.(¯Øåßøÿÿÿÿ8êç…Â+
-Z"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(×“¾ñùÿÿÿÿ8êç…Â+
 Ksquid:S1066"/Merge this if statement with the enclosing one.(£ççÒ8‹Â—¾+
-lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ÙŞ’‰ÿÿÿÿÿ8‹Â—¾+
-Rsquid:S2696"6Make the enclosing method "static" or remove this set.(‰Âä¸8êç…Â+
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Î­Ÿûÿÿÿÿ8‹Â—¾+
 Psquid:S1481"/Remove this unused "scanFormat" local variable.(äÃãúıÿÿÿÿ8‹Â—¾+
+Rsquid:S2696"6Make the enclosing method "static" or remove this set.(‰Âä¸8êç…Â+
+_squid:S1854">Remove this useless assignment to local variable "scanFormat".(ÅÕÊıÿÿÿÿ8‹Â—¾+
+hsquid:S1858"G"getFormatName" returns a string, there's no need to call "toString()".(ÅÕÊıÿÿÿÿ8µÜ€•É+
+"squid:ClassVariableVisibilityCheck"XMake isScanTypeQR a static final constant or non-public and provide accessors if needed.(Ñø¾òøÿÿÿÿ8¯ñ—¾+
+’"squid:ClassVariableVisibilityCheck"ZMake scanning2DCode a static final constant or non-public and provide accessors if needed.(¯Øåßøÿÿÿÿ8êç…Â+
+jsquid:MaximumInheritanceDepth"<This class has 8 parents which is greater than 5 authorized.(ÄÇ‚·8µÜ€•É+
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ÙŞ’‰ÿÿÿÿÿ8‹Â—¾+
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(±ğğ½üÿÿÿÿ8‹Â—¾+
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(«‰…úÿÿÿÿ8‹Â—¾+
+Z"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(×“¾ñùÿÿÿÿ8êç…Â+
+Usquid:S1444"4Make this "public static scanning2DCode" field final(¯Øåßøÿÿÿÿ8êç…Â+
 Wsquid:S2696"6Make the enclosing method "static" or remove this set.(Ø¨í´ÿÿÿÿÿ8êç…Â+
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ÓœÈî8‹Â—¾+
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ı‡÷8¤ ó­É+
+asquid:S1858"E"getContents" returns a string, there's no need to call "toString()".(ÉÁÅ’8µÜ€•É+
+[squid:UselessImportCheck"-Remove this unused import 'android.util.Log'.(Ô¦Ø²øÿÿÿÿ8àÍì³Ë+

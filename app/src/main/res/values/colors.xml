@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="orange">#f7931e</color>
     <color name="transparent_background">#80000000</color>
+    <color name="transparent_background_dark">#A6000000</color>
 </resources>
